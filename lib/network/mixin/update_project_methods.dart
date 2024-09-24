@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -21,7 +22,7 @@ mixin UpdateProjectMethods on ConstantNetwork {
       required String logo,
       required List<MembersProject> members,
       required List imagesList}) async {
-    // update logo
+    // // update logo
     try {
       Uint8List data = await File(logo).readAsBytes();
       final response =
@@ -72,7 +73,7 @@ mixin UpdateProjectMethods on ConstantNetwork {
       throw FormatException(e.toString());
     }
 
-    //   //update images
+    //   update images
     try {
       List<Uint8List> convertedImages = [];
 
@@ -98,7 +99,7 @@ mixin UpdateProjectMethods on ConstantNetwork {
       throw FormatException(e.toString());
     }
 
-    //   //update link
+    //  update link
     try {
       final response =
           await dio.put("$baseurl$updateProjectLinksEndPoint/$projectID",
@@ -115,8 +116,9 @@ mixin UpdateProjectMethods on ConstantNetwork {
 
     // update members
     try {
-      List<dynamic> membersList = members.map((member) => member).toList();
-      print(membersList);
+      List membersList = members.map((member) => member.toJsonM()).toList();
+      print({"members": membersList});
+
       final response = await dio.put(
           "$baseurl$updateProjectMembersEndPoint/$projectID",
           data: {"members": membersList},
@@ -124,6 +126,9 @@ mixin UpdateProjectMethods on ConstantNetwork {
       print('members $response');
     } on DioException catch (e) {
       print('dio ${e.response?.data}');
+      print('dio ${e.response?.statusCode}');
+      print('dio ${e.response?.extra}');
+      print('dio ${e.response?.statusMessage}');
 
       throw FormatException(e.response?.data['data']);
     } catch (e) {

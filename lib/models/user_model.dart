@@ -81,7 +81,6 @@ class Link {
   }
 }
 
-
 class Projects {
   Projects({
     required this.projectId,
@@ -150,7 +149,9 @@ class Projects {
         allowEdit = json['allow_edit'],
         allowRating = json['allow_rating'],
         isPublic = json['is_public'],
-        rating = (json['rating'] is int) ? (json['rating'] as int).toDouble() : (json['rating'] as double) ,
+        rating = (json['rating'] is int)
+            ? (json['rating'] as int).toDouble()
+            : (json['rating'] as double),
         createAt = json['create_at'],
         updateAt = json['update_at'],
         imagesProject = List<dynamic>.from(json['images_project']),
@@ -206,7 +207,7 @@ class MembersProject {
   late final Link? link;
 
   MembersProject.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['user_id'];
     firstName = json['first_name'];
     lastName = json['last_name'];
     email = json['email'];
@@ -217,13 +218,21 @@ class MembersProject {
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['id'] = id;
+    data['user_id'] = id;
     data['first_name'] = firstName;
     data['last_name'] = lastName;
     data['email'] = email;
     data['position'] = position;
     data['image_url'] = imageUrl;
     data['link'] = link?.toJson();
+    return data;
+  }
+
+  Map<String, dynamic> toJsonM() {
+    final data = <String, dynamic>{};
+    data['user_id'] = id;
+    data['position'] = position;
+
     return data;
   }
 
