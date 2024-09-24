@@ -3,9 +3,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:project_judge/models/user_model.dart';
 
 class MyProjectCardClosed extends StatelessWidget {
-
-  const MyProjectCardClosed({super.key,required this.project});
-   final Projects project;
+  const MyProjectCardClosed({super.key, required this.project});
+  final Projects project;
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +91,7 @@ class MyProjectCardClosed extends StatelessWidget {
                       const SizedBox(height: 2),
                       RatingBar.builder(
                         itemSize: ratingItemSize,
-                        initialRating: project.rating.toDouble() ,
+                        initialRating: project.rating.toDouble(),
                         minRating: 1,
                         direction: Axis.horizontal,
                         allowHalfRating: false,
@@ -102,6 +101,7 @@ class MyProjectCardClosed extends StatelessWidget {
                           color: Colors.amber,
                         ),
                         onRatingUpdate: (rating) {},
+                        ignoreGestures: true,
                       ),
                       const SizedBox(height: 2),
                       Text(
@@ -118,7 +118,7 @@ class MyProjectCardClosed extends StatelessWidget {
               Center(
                 child: IconButton(
                   onPressed: () {},
-                  icon:  Icon(
+                  icon: Icon(
                     Icons.edit_off_outlined,
                     color: const Color(0xFF4E2EB5),
                     size: iconSize,

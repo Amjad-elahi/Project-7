@@ -70,105 +70,110 @@ class CreateAccountScreen extends StatelessWidget {
                                   topLeft: Radius.circular(40))),
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: Column(
+                            child: ListView(
                               children: [
-                                const SizedBox(
-                                  height: 60,
-                                ),
-                                const Text(
-                                  "Sign up",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 32),
-                                ),
-                                const SizedBox(
-                                  height: 70,
-                                ),
                                 Column(
                                   children: [
-                                    CustomTextFormField(
-                                      floatingLabelBehavior:
-                                          FloatingLabelBehavior.never,
-                                      controller: bloc.emailController,
-                                      hintText: "Example@example.com",
-                                      icon: Icons.email_outlined,
-                                      validator: (value) {
-                                        if (value == null ||
-                                            value.isEmpty ||
-                                            !value.contains('@')) {
-                                          return 'Please enter a valid email';
-                                        }
-                                        return null;
-                                      },
+                                    const Text(
+                                      "Sign up",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 32),
                                     ),
                                     const SizedBox(
-                                      height: 20,
+                                      height: 70,
                                     ),
-                                    CustomTextFormField(
-                                      floatingLabelBehavior:
-                                          FloatingLabelBehavior.never,
-                                      controller: bloc.fNameController,
-                                      hintText: "First Name",
-                                      icon: Icons.person_outline_rounded,
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Please enter your first name';
-                                        }
-                                        return null;
-                                      },
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    CustomTextFormField(
-                                      floatingLabelBehavior:
-                                          FloatingLabelBehavior.never,
-                                      controller: bloc.lNameController,
-                                      hintText: "Last Name",
-                                      icon: Icons.person_outline_rounded,
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Please enter your last name';
-                                        }
-                                        return null;
-                                      },
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    CustomElevatedButton(
-                                      minimumSize: Size(
-                                          MediaQuery.of(context).size.width,
-                                          63),
-                                      backgroundColor: const Color(0xff4D2EB4),
-                                      text: "Get OTP",
-                                      textcolor: Colors.white,
-                                      onPressed: () {
-                                        bloc.checkAccounts();
-                                      },
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                    Column(
                                       children: [
-                                        const Text(
-                                          "Already have an account?",
-                                          style: TextStyle(color: Colors.white),
+                                        CustomTextFormField(
+                                          floatingLabelBehavior:
+                                              FloatingLabelBehavior.never,
+                                          controller: bloc.emailController,
+                                          hintText: "Example@example.com",
+                                          icon: Icons.email_outlined,
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty ||
+                                                !value.contains('@')) {
+                                              return 'Please enter a valid email';
+                                            }
+                                            return null;
+                                          },
                                         ),
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          const LoginScreen()));
-                                            },
-                                            child: const Text(
-                                              "Log in",
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        CustomTextFormField(
+                                          floatingLabelBehavior:
+                                              FloatingLabelBehavior.never,
+                                          controller: bloc.fNameController,
+                                          hintText: "First Name",
+                                          icon: Icons.person_outline_rounded,
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Please enter your first name';
+                                            }
+                                            return null;
+                                          },
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        CustomTextFormField(
+                                          floatingLabelBehavior:
+                                              FloatingLabelBehavior.never,
+                                          controller: bloc.lNameController,
+                                          hintText: "Last Name",
+                                          icon: Icons.person_outline_rounded,
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Please enter your last name';
+                                            }
+                                            return null;
+                                          },
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        CustomElevatedButton(
+                                          minimumSize: Size(
+                                              MediaQuery.of(context).size.width,
+                                              63),
+                                          backgroundColor:
+                                              const Color(0xff4D2EB4),
+                                          text: "Get OTP",
+                                          textcolor: Colors.white,
+                                          onPressed: () {
+                                            bloc.checkAccounts();
+                                          },
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            const Text(
+                                              "Already have an account?",
                                               style: TextStyle(
-                                                  color: Color(0xff57E3D8)),
-                                            ))
+                                                  color: Colors.white),
+                                            ),
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pushReplacement(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const LoginScreen()));
+                                                },
+                                                child: const Text(
+                                                  "Log in",
+                                                  style: TextStyle(
+                                                      color: Color(0xff57E3D8)),
+                                                ))
+                                          ],
+                                        )
                                       ],
-                                    )
+                                    ),
                                   ],
                                 ),
                               ],

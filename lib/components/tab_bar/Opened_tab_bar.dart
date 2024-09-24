@@ -101,6 +101,7 @@ class MyProjectCardOpened extends StatelessWidget {
                           color: Colors.amber,
                         ),
                         onRatingUpdate: (rating) {},
+                        ignoreGestures: true,
                       ),
                       const SizedBox(height: 2),
                       Text(

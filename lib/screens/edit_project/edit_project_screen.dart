@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:project_judge/components/app_bar/custom_app_bar.dart';
 import 'package:project_judge/components/buttons/custom_elevated_button.dart';
 import 'package:project_judge/components/dialog/error_dialog.dart';
 import 'package:project_judge/components/text/custom_text.dart';
@@ -77,14 +78,8 @@ class EditProjectForm extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: const Color(0xffFBFBFB),
-        appBar: AppBar(
-          backgroundColor: const Color(0xff4E2EB5),
-          title: const CustomText(
-            text: "Modify Project",
-            size: 20,
-            color: Color(0xffffffff),
-          ),
-          actions: [
+        appBar: CustomAppBar(
+            text: "Modify Project",actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: IconButton(
@@ -144,12 +139,13 @@ class EditProjectForm extends StatelessWidget {
               ),
             ),
           ],
-        ),
+          ),
         body: SafeArea(
           child: EditProjectBody(formKey: formKey),
         ),
       ),
-    );
+    );  
+        
   }
 }
 

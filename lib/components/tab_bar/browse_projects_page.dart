@@ -90,16 +90,17 @@ class BrowseProjectsPage extends StatelessWidget {
                       const SizedBox(height: 2),
                       RatingBar.builder(
                         itemSize: ratingItemSize,
-                        initialRating: project.rating.toDouble() ,
+                        initialRating: project.rating.toDouble(),
                         minRating: 1,
                         direction: Axis.horizontal,
-                        allowHalfRating: false,
+                        allowHalfRating: true,
                         itemCount: 5,
                         itemBuilder: (context, _) => const Icon(
                           Icons.star,
                           color: Colors.amber,
                         ),
                         onRatingUpdate: (rating) {},
+                        ignoreGestures: true,
                       ),
                       const SizedBox(height: 2),
                       Text(

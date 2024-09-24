@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int selectedIndex;
@@ -15,8 +16,8 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    const bottomNavBarHeight = 120.0;
-    const middleButtonSize = 100.0;
+    const bottomNavBarHeight = 110.0;
+    const middleButtonSize = 80.0;
 
     return Stack(
       clipBehavior: Clip.none,
@@ -66,7 +67,7 @@ class BottomNavBar extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: bottomNavBarHeight / 2 - middleButtonSize / 70,
+          bottom: bottomNavBarHeight / 1.7 - middleButtonSize / 70,
           left: (screenWidth / 2) - (middleButtonSize / 2),
           child: GestureDetector(
             onTap: onMiddleButtonTapped,
@@ -78,8 +79,8 @@ class BottomNavBar extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: ClipOval(
-                child: Image.asset(
-                  'assets/images/FAB.png',
+                child: SvgPicture.asset(
+                  'assets/svg/bracode_icon.svg',
                   fit: BoxFit.cover,
                   width: 50,
                   height: 48,
