@@ -4,9 +4,6 @@
 
 ### Features
 - User Registration and Login: Secure sign-up and login process using OTP.
-Expand
-README.copy.md
-18 KB
 ﻿
 # Tuwaiq Gallery App
 
@@ -116,6 +113,8 @@ The app uses a `ConstantNetwork` class to manage all the API base URLs and endpo
     - `ratingProjectEndPoint`: `/user/rating/project`
   - **Supervisor Role:**
     - `supervisorCreate`: `/supervisor/create/project`
+  - **Admin Role:**
+    - `adminEndpoint`: `/admin/change/role/user`
 
 
 By having all endpoints clearly defined in this class, the app can ensure consistent and centralized API management, making it easier to update or expand the network interactions.
@@ -346,7 +345,6 @@ The project is divided into multiple layers to promote clean architecture:
 - `barcode_widget`: Generate barcode images.
   ### Output
 ![Screenshot 2024-09-24 at 3 29 39 AM](https://github.com/user-attachments/assets/973e2e28-6d56-4123-b328-c50885985ff9)
-![Screenshot 2024-09-24 at 3 29 50 AM](https://github.com/user-attachments/assets/1ad19596-4215-4c99-8c7b-64e9d05bee44)
 ![Screenshot 2024-09-23 at 8 44 04 PM](https://github.com/user-attachments/assets/bbe3c472-5385-4817-8517-d97223b86bec)
 ![Screenshot 2024-09-23 at 8 44 06 PM](https://github.com/user-attachments/assets/034f4a61-4054-47fa-adf4-cad0a2e62359)
 ![Screenshot 2024-09-23 at 8 44 09 PM](https://github.com/user-attachments/assets/96e9cf0f-b961-4d37-9bd8-45a5400d43c1)
