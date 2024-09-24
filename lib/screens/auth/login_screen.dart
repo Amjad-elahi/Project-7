@@ -81,74 +81,83 @@ class LoginScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(
-                          height: 70,
+                ListView(
+                  children: [
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
                         ),
-                        const Text(
-                          "Log in",
-                          style: TextStyle(color: Colors.white, fontSize: 32),
-                        ),
-                        const SizedBox(
-                          height: 130,
-                        ),
-                        CustomTextFormField(
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          controller: cubit.emailLoginController,
-                          hintText: "Example@example.com",
-                          icon: Icons.email_outlined,
-                          validator: (value) {
-                            if (value == null ||
-                                value.isEmpty ||
-                                !value.contains('@')) {
-                              return 'Please enter a valid email';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(
-                          height: 111,
-                        ),
-                        CustomElevatedButton(
-                          minimumSize:
-                              Size(MediaQuery.of(context).size.width, 63),
-                          backgroundColor: const Color(0xff4D2EB4),
-                          text: "Get OTP",
-                          textcolor: Colors.white,
-                          onPressed: () {
-                            cubit.checkLogin(
-                                email: cubit.emailLoginController.text);
-                          },
-                        ),
-                        Row(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              "Don’t have an account?",
-                              style: TextStyle(color: Colors.white),
+                            const SizedBox(
+                              height: 150,
                             ),
-                            TextButton(
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const CreateAccountScreen()));
-                                },
-                                child: const Text(
-                                  "Create an account",
-                                  style: TextStyle(color: Color(0xff57E3D8)),
-                                ))
+                            const Text(
+                              "Log in",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 32),
+                            ),
+                            const SizedBox(
+                              height: 130,
+                            ),
+                            CustomTextFormField(
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
+                              controller: cubit.emailLoginController,
+                              hintText: "Example@example.com",
+                              icon: Icons.email_outlined,
+                              validator: (value) {
+                                if (value == null ||
+                                    value.isEmpty ||
+                                    !value.contains('@')) {
+                                  return 'Please enter a valid email';
+                                }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(
+                              height: 111,
+                            ),
+                            CustomElevatedButton(
+                              minimumSize:
+                                  Size(MediaQuery.of(context).size.width, 63),
+                              backgroundColor: const Color(0xff4D2EB4),
+                              text: "Get OTP",
+                              textcolor: Colors.white,
+                              onPressed: () {
+                                cubit.checkLogin(
+                                    email: cubit.emailLoginController.text);
+                              },
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  "Don’t have an account?",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const CreateAccountScreen()));
+                                    },
+                                    child: const Text(
+                                      "Create an account",
+                                      style:
+                                          TextStyle(color: Color(0xff57E3D8)),
+                                    ))
+                              ],
+                            )
                           ],
-                        )
-                      ],
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),
