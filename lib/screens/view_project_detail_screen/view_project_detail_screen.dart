@@ -289,10 +289,10 @@ class ViewProjectDetailScreen extends StatelessWidget {
                                       color: Color(0xff59E2DB),
                                       size: 12,
                                     ))
-                                : CustomText(
+                                : const CustomText(
                                     text: "preseentaion not uploaded yet",
                                     size: 12,
-                                    color: const Color(0xff848484),
+                                    color: Color(0xff848484),
                                   ),
                           ],
                         ),
@@ -352,7 +352,7 @@ class ViewProjectDetailScreen extends StatelessWidget {
                               const CustomText(
                                   text: "No team members found.", size: 16),
                             ],
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             if (getIt.get<DataLayer>().userInfo!.role != 'user')

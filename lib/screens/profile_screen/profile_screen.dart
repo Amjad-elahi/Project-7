@@ -42,7 +42,7 @@ class ProfileScreen extends StatelessWidget {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => WelcomeScreen()));
+                                  builder: (context) => const WelcomeScreen()));
                         },
                         icon: const Icon(
                           Icons.exit_to_app,
@@ -136,7 +136,7 @@ class ProfileScreen extends StatelessWidget {
                             color: const Color(0xffffffff)),
                       ),
                       ListTile(
-                        leading: Icon(
+                        leading: const Icon(
                           Icons.note,
                           color: Color(0XFFFFFFFF),
                         ),
@@ -174,10 +174,10 @@ class ProfileScreen extends StatelessWidget {
                                 color: Color(0xff59E2DB),
                                 size: 14,
                               ))
-                          : CustomText(
+                          : const CustomText(
                               text: "CV not uploaded yet",
                               size: 14,
-                              color: const Color(0xffffffffff),
+                              color: Color(0xffffffffff),
                             ),
                       const SizedBox(
                         height: 40,
@@ -208,7 +208,7 @@ class ProfileScreen extends StatelessWidget {
                             backgroundColor: Colors.white,
                             text: "Manage Users",
                             textcolor: const Color(0xff5030B6)),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       )
                     ],

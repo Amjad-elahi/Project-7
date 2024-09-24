@@ -27,7 +27,7 @@ class CustomManageUsersContainer extends StatelessWidget {
         title: CustomText(
           text: position,
           size: 14,
-          color: Color(0xff262626),
+          color: const Color(0xff262626),
         ),
         trailing: Switch(
           value: isSwitched,

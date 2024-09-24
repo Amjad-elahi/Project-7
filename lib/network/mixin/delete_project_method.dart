@@ -4,7 +4,6 @@ import 'package:project_judge/network/constant_network.dart';
 mixin DeleteProjectMethod on ConstantNetwork {
   deleteProject({required String projectID, required String token}) async {
     try {
-      ;
       await dio.delete("$baseurl$delete/$projectID",
           data: {},
           options: Options(headers: {"Authorization": "Bearer $token"}));
