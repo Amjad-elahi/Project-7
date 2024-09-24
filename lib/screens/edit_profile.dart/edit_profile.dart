@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
+import 'package:project_judge/components/app_bar/custom_app_bar.dart';
 import 'package:project_judge/components/dialog/error_dialog.dart';
 import 'package:project_judge/components/text_field/custom_text_form_field.dart';
 import 'package:project_judge/screens/edit_profile.dart/bloc/updateprofile_bloc.dart';
@@ -65,15 +66,8 @@ class EditProfile extends StatelessWidget {
           },
           child: Scaffold(
             backgroundColor: const Color(0xffFBFBFB),
-            appBar: AppBar(
-              iconTheme: const IconThemeData(
-                color: Colors.white,
-              ),
-              backgroundColor: const Color(0xFF4E2EB5),
-              elevation: 0,
-              centerTitle: true,
-              title: const Text('Edit Profile',
-                  style: TextStyle(color: Colors.white)),
+            appBar: CustomAppBar(
+              text: 'Edit Profile',
               actions: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),

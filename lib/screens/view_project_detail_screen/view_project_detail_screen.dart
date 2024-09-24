@@ -1,3 +1,4 @@
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,9 +69,9 @@ class ViewProjectDetailScreen extends StatelessWidget {
               text: 'Project Details',
               actions: [
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {showDialog(context: context, builder: (context)=>AlertDialog(content: BarcodeWidget(data: projectID, barcode: Barcode.qrCode()),));},
                     icon: SvgPicture.asset("assets/svg/bracode_icon.svg"))
-              ],
+              ]
             ),
             body: BlocBuilder<ViewProjectDetailsCubit, ViewProjectDetailsState>(
               builder: (context, state) {

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_judge/components/app_bar/custom_app_bar.dart';
 import 'package:project_judge/components/buttons/custom_elevated_button.dart';
 import 'package:project_judge/data_layer/data_layer.dart';
 import 'package:project_judge/models/user_model.dart';
 import 'package:project_judge/screens/edit_profile.dart/edit_profile.dart';
+import 'package:project_judge/screens/manage_user_screen/manage_user_screen.dart';
 import 'package:project_judge/screens/profile_screen/cubit/profile_cubit.dart';
 import 'package:project_judge/screens/welcome_screen/welcome_screen.dart';
 import 'package:project_judge/setup/init_setup.dart';
@@ -11,7 +14,6 @@ import 'package:simple_icons/simple_icons.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../../components/text/custom_text.dart';
 
-// ignore: must_be_immutable
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -26,15 +28,8 @@ class ProfileScreen extends StatelessWidget {
           builder: (context, state) {
             return Scaffold(
                 backgroundColor: const Color(0xff4E2EB5),
-                appBar: AppBar(
-                  automaticallyImplyLeading: false,
-                  backgroundColor: const Color(0xFF4E2EB5),
-                  elevation: 0,
-                  centerTitle: true,
-                  title: const Text(
-                    'Profile',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                appBar: CustomAppBar(
+                  text: 'Profile',
                   actions: [
                     IconButton(
                         onPressed: () {
@@ -42,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => WelcomeScreen()));
+                                  builder: (context) => const WelcomeScreen()));
                         },
                         icon: const Icon(
                           Icons.exit_to_app,
@@ -80,11 +75,37 @@ class ProfileScreen extends StatelessWidget {
                         height: 20,
                       ),
                       Center(
-                          child: CustomText(
-                        text: user.id!,
-                        size: 12,
-                        color: const Color.fromARGB(133, 255, 255, 255),
-                        weight: FontWeight.w500,
+                          child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomText(
+                            text: user.id!,
+                            size: 12,
+                            color: const Color.fromARGB(133, 255, 255, 255),
+                            weight: FontWeight.w500,
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                Clipboard.setData(ClipboardData(text: user.id!))
+                                    .then((value) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        'ID was copied successfully!',
+                                        style:
+                                            TextStyle(color: Color(0xFF4E2EB5)),
+                                      ),
+                                      backgroundColor: Colors.white,
+                                      duration: Duration(seconds: 2),
+                                    ),
+                                  );
+                                });
+                              },
+                              icon: const Icon(
+                                Icons.copy_rounded,
+                                color: Colors.white,
+                              ))
+                        ],
                       )),
                       const SizedBox(
                         height: 40,
@@ -136,7 +157,7 @@ class ProfileScreen extends StatelessWidget {
                             color: const Color(0xffffffff)),
                       ),
                       ListTile(
-                        leading: Icon(
+                        leading: const Icon(
                           Icons.note,
                           color: Color(0XFFFFFFFF),
                         ),
@@ -174,10 +195,10 @@ class ProfileScreen extends StatelessWidget {
                                 color: Color(0xff59E2DB),
                                 size: 14,
                               ))
-                          : CustomText(
+                          : const CustomText(
                               text: "CV not uploaded yet",
                               size: 14,
-                              color: const Color(0xffffffffff),
+                              color: Color(0xffffffffff),
                             ),
                       const SizedBox(
                         height: 40,
@@ -203,12 +224,17 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       if (user.role == 'admin')
                         CustomElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return const ManageUserScreen();
+                              }));
+                            },
                             minimumSize: const Size(350, 63),
                             backgroundColor: Colors.white,
                             text: "Manage Users",
                             textcolor: const Color(0xff5030B6)),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       )
                     ],
