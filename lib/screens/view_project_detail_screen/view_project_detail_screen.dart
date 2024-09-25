@@ -65,14 +65,22 @@ class ViewProjectDetailScreen extends StatelessWidget {
             }
           },
           child: Scaffold(
-            appBar: CustomAppBar(
-              text: 'Project Details',
-              actions: [
-                IconButton(
-                    onPressed: () {showDialog(context: context, builder: (context)=>AlertDialog(content: BarcodeWidget(data: projectID, barcode: Barcode.qrCode()),));},
-                    icon: SvgPicture.asset("assets/svg/bracode_icon.svg"))
-              ]
-            ),
+            appBar: CustomAppBar(text: 'Project Details', actions: [
+              IconButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              content: SizedBox(
+                                  width: 300,
+                                  height: 300,
+                                  child: BarcodeWidget(
+                                      data: projectID,
+                                      barcode: Barcode.qrCode())),
+                            ));
+                  },
+                  icon: SvgPicture.asset("assets/svg/bracode_icon.svg"))
+            ]),
             body: BlocBuilder<ViewProjectDetailsCubit, ViewProjectDetailsState>(
               builder: (context, state) {
                 if (state is LoadingState) {
@@ -104,7 +112,7 @@ class ViewProjectDetailScreen extends StatelessWidget {
                           CustomProjectDetailListTile(
                             title: currentProject.projectName ??
                                 "project's name not provided",
-                            type: "${currentProject.type}" ,
+                            type: "${currentProject.type}",
                             bootcampName: currentProject.bootcampName ??
                                 "bootcamp name not provided",
                             leading: Image.network(
@@ -314,7 +322,7 @@ class ViewProjectDetailScreen extends StatelessWidget {
                             if (currentProject.membersProject!.isNotEmpty)
                               ...currentProject.membersProject!.map((member) {
                                 return CustomTeamMemberCard(
-                                  name: "${member.firstName}" ,
+                                  name: "${member.firstName}",
                                   position: "${member.position}",
                                   description:
                                       member.email ?? "email not provided",
