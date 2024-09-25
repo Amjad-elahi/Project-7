@@ -77,7 +77,7 @@ class ManageUserScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 26),
                     CustomManageUsersContainer(
-                      position: cubit.isSwitched ? "supervisor" : "user",
+                      position: cubit.isSwitched ? "Upgrade to supervisor" : "Upgrade to user",
                       isSwitched: cubit.isSwitched,
                       onChanged: (value) {
                         cubit.switchButton();

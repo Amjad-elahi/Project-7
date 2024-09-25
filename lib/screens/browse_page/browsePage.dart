@@ -7,6 +7,8 @@ import 'package:project_judge/screens/search_screen/search_screen.dart';
 import 'package:project_judge/screens/view_project_detail_screen/view_project_detail_screen.dart';
 import 'package:project_judge/setup/init_setup.dart';
 
+import '../change_project_screen/change_project_state.dart';
+
 class BrowsePage extends StatefulWidget {
   const BrowsePage({super.key});
 
@@ -58,6 +60,24 @@ class BrowsePageState extends State<BrowsePage>
         backgroundColor: const Color(0xFF4E2EB5),
         title: const Text("Browse", style: TextStyle(color: Colors.white)),
         centerTitle: true,
+        //apears for superviser/admin only
+        actions: [
+          if (getIt.get<DataLayer>().userInfo!.role != 'user')
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ChangeProjectStatus()));
+                },
+                icon: const Icon(
+                  Icons.settings,
+                  color: Color(0xffffffff),
+                )),
+          const SizedBox(
+            width: 10,
+          )
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(120),
           child: Column(
