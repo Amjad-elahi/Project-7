@@ -364,7 +364,7 @@ The project is divided into multiple layers to promote clean architecture:
 ### Prerequisites
 - Flutter SDK
 - Dart
--  Visual Studio Code (with Flutter extensions)
+- Visual Studio Code (with Flutter extensions)
 - Xcode (for iOS development)
 
 ### Installation
@@ -381,7 +381,7 @@ The project is divided into multiple layers to promote clean architecture:
 - For barcode scanning and image picking features, ensure that the necessary permissions are added to the `AndroidManifest.xml` and `Info.plist` files for Android and iOS, respectively.
 
 ### Team Members
- Abdulaziz Alruwaily
- Amjad Elahi
- Linda Almakramy
-  Nouf Alqahtani
+ Abdulaziz Alruwaily,
+ Amjad Elahi,
+ Linda Almakramy,
+ and Nouf Alqahtani
