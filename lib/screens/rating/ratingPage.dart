@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import 'package:project_judge/components/app_bar/custom_app_bar.dart';
 import 'package:project_judge/components/dialog/error_dialog.dart';
 import 'package:project_judge/components/slider_section/sliderSection.dart';
 import 'package:project_judge/screens/navigation/navigationPage.dart';
@@ -31,19 +32,16 @@ class RatingPage extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const NavigationPage(slectedPage: 4)));
+                      builder: (context) =>
+                          const NavigationPage(slectedPage: 4)));
             }
             if (state is ErrorState) {
               showErrorDialog(context, state.msg);
             }
           },
           child: Scaffold(
-            appBar: AppBar(
-              iconTheme: const IconThemeData(color: Colors.white),
-              backgroundColor: const Color(0xFF4E2EB5),
-              elevation: 0,
-              centerTitle: true,
-              title: const Text('Rate', style: TextStyle(color: Colors.white)),
+            appBar: CustomAppBar(
+              text: 'Rate',
               actions: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
